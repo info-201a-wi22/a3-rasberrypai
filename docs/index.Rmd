@@ -1,0 +1,44 @@
+---
+title: "Assignment 3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = FALSE, include = FALSE, message = FALSE, warnings = FALSE}
+source("../source/analysis.R")
+```
+
+## Introduction
+
+In this report, we will look at incarceration data collected by the Vera Institute to understand how incarceration varies by race. To do so, we will focus specifically on annual prison admissions per county (total_prison_adm). Note that we do not focus on annual prison populations because we do not have information about prison discharges, transfers or deaths. When looking at prison admissions per county we will consider race (aapi_prison_adm, black_prison_adm, latinx_prison_adm, native_prison_adm, white_prison_adm) as well as type of environment (urbanicity).
+
+## Summary Information
+
+In `r max_prison_adm_year`, the national annual admission count for prisons reached a whopping `r max_prison_adm_count`, `r change_in_prison_adm_since_90` more since the 90s. That being said, since then, the national annual admissions count for prisons has fallen by `r change_in_prison_adm_since_max` to `r prison_adm_2016`. When looking at these rates, we see that the number of people who are Black or White people are admitted significantly more than any other race (see time trend chart). When considering other factors beside race, we see that the environment with the most number of prison admissions is `r urbanicity_max_prison` and the environment with the least number of prison admission is `r urbanicity_min_prison`.
+
+## Time Trend Chart
+
+```{r, echo=FALSE}
+plot(race_adm_by_year_plot)
+```
+
+We include the above chart so that we can visualize the change in incarcerations by race over time. In doing so, we see that since 1990, the number of incarcerations is significantly higher for Black and White people than Latinx, AAPI or Native people. Despite the significantly higher number of White people than Black people in the U.S., we see that Black people had higher incarceration rates throughout the 1990s and early 2000s and still maintained similar incarceration rates in the late 2010s. This disproportionate incarceration of Black people can be attributed to racial inequality.
+
+## Variable Comparison Chart
+
+```{r, echo=FALSE}
+plot(prison_adm_by_urbanicity_plot)
+```
+
+We include the above chart so that we can visualize how the type of environment affects incarceration. In doing so, we see that urban areas have a significantly higher rate of incarceration than any other type of environment. We also, see that rural areas have the lowest rate of incarceration than any other type of environment. This hints at racial inequality since historically urban areas have been more densely populated by people of color while, rural areas have been mostly populated by White people.
+
+
+## Map
+```{r, echo=FALSE}
+plot(county_map)
+```
+
+We include the above chart so that we can visualize incarcerations in our home, Washington State. As per our findings in the variable comparison chart, we see that prison admissions are the highest in the most urban areas, like King County. Further research as to the racial demographics of each county as well as the incarcerations by race may be interesting here.
